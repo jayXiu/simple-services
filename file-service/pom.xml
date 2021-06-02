@@ -49,6 +49,11 @@
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.csource</groupId>
+            <artifactId>fastdfs</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

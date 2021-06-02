@@ -24,9 +24,9 @@ import java.util.stream.Collectors;
  * @Author: wujunlin
  * @Date: 2021/5/24 0024
  */
-@Service
+//@Service
 @Slf4j
-public class AliyunFileService implements FileService{
+public class AliyunBiz implements FileService{
 
     @Value("${fileConfig.uploadTempBasePath}")
     private String uploadTempBasePath;

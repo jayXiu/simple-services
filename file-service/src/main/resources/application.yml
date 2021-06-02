@@ -22,3 +22,6 @@ aliyunOSS:
   endpointUrl: xx
   cdnUrl: xx #CDN域名
   extranetDomain: xx #外网域名
+
+fastdfs:
+  tracker: fdfs://xxx:22122
