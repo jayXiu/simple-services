@@ -8,7 +8,7 @@ import lombok.Data;
  * @Date: 2021/6/2
  */
 @Data
-public class AliyunDownloadVO {
+public class UrlDownload {
 
     @ApiModelProperty(value = "文件URL")
     private String url;

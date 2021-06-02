@@ -16,7 +16,7 @@ fileConfig:
 
 aliyunOSS:
   folder: xxx/ #文件夹名称
-  backetName: xx#bucket名称
+  backetName: xx #bucket名称
   accessKeyId: xx #密钥Access Key ID
   accessKeySecret: xx #密钥Access Key Secret
   endpointUrl: xx

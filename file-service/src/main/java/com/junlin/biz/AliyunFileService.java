@@ -3,7 +3,7 @@ package com.junlin.biz;
 import com.junlin.utils.AliyunOSSClientUtils;
 import com.junlin.utils.DateUtils;
 import com.junlin.utils.FileUtils;
-import com.junlin.vo.AliyunDownloadVO;
+import com.junlin.vo.UrlDownload;
 import com.junlin.vo.UploadFileResp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,7 +41,7 @@ public class AliyunFileService implements FileService{
     }
 
     @Override
-    public List<String> getDownloadUrl(List<AliyunDownloadVO> aliyuns) {
+    public List<String> getDownloadUrl(List<UrlDownload> aliyuns) {
         return  aliyuns.stream().map(vo->{ return AliyunOSSClientUtils.getDownloadUrl(vo.getUrl(), vo.getFileName()); }).collect(Collectors.toList());
     }
 

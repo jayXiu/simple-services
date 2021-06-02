@@ -1,7 +1,7 @@
 package com.junlin.web;
 
 import com.junlin.biz.FileService;
-import com.junlin.vo.AliyunDownloadVO;
+import com.junlin.vo.UrlDownload;
 import com.junlin.vo.UploadFileResp;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,7 +34,7 @@ public class FileController {
     @PostMapping("/getDownloadUrl")
     @ResponseBody
     @ApiOperation(value = "转换下载地址指定文件名称")
-    public List<String> getDownloadUrl(@RequestBody List<AliyunDownloadVO> aliyuns) {
+    public List<String> getDownloadUrl(@RequestBody List<UrlDownload> aliyuns) {
         return fileService.getDownloadUrl(aliyuns);
     }
 }

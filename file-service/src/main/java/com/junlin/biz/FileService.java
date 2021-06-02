@@ -1,8 +1,7 @@
 package com.junlin.biz;
 
-import com.junlin.vo.AliyunDownloadVO;
+import com.junlin.vo.UrlDownload;
 import com.junlin.vo.UploadFileResp;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -15,6 +14,6 @@ public interface FileService {
 
     List<UploadFileResp> uploadFiles(MultipartFile[] files) throws Exception;
 
-    List<String> getDownloadUrl(List<AliyunDownloadVO> aliyuns);
+    List<String> getDownloadUrl(List<UrlDownload> aliyuns);
 
 }
