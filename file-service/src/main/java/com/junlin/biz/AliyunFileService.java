@@ -3,6 +3,7 @@ package com.junlin.biz;
 import com.junlin.utils.AliyunOSSClientUtils;
 import com.junlin.utils.DateUtils;
 import com.junlin.utils.FileUtils;
+import com.junlin.vo.AliyunDownloadVO;
 import com.junlin.vo.UploadFileResp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * @Author: wujunlin
@@ -36,6 +38,11 @@ public class AliyunFileService implements FileService{
             res.add(uploadFile(multipartFile));
         }
         return res;
+    }
+
+    @Override
+    public List<String> getDownloadUrl(List<AliyunDownloadVO> aliyuns) {
+        return  aliyuns.stream().map(vo->{ return AliyunOSSClientUtils.getDownloadUrl(vo.getUrl(), vo.getFileName()); }).collect(Collectors.toList());
     }
 
     public UploadFileResp uploadFile(MultipartFile file) throws IOException {
