@@ -14,7 +14,7 @@ public class UploadFileResp {
 	private String fileName;
 
 	@ApiModelProperty(value = "阿里云保存路径")
-	private String aliyunUrl;
+	private String url;
 
 	@ApiModelProperty(value = "文件类型（jpg、png...）")
 	private String fileType;

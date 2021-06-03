@@ -28,18 +28,18 @@ public class FastdfsBiz implements FileService{
     @Override
     public List<UploadFileResp> uploadFiles(MultipartFile[] files) throws Exception {
 
-        List<UploadFileResp> res = new ArrayList<>();
+        List<UploadFileResp> result = new ArrayList<>();
         for (MultipartFile multipartFile : files) {
 
             FastdfsHelper helper = new FastdfsHelper(URI.create(trackerHost));
 
-            FastDFSFile file = new FastDFSFile(multipartFile.getOriginalFilename(), multipartFile.getBytes(), FileUtils.getSuffix(multipartFile.getOriginalFilename()));
-            String url = helper.upload(file);
+            UploadFileResp resp = new UploadFileResp();
+            resp.setFileName(multipartFile.getOriginalFilename());
+            resp.setUrl(helper.upload(new FastDFSFile(multipartFile.getOriginalFilename(), multipartFile.getBytes(), FileUtils.getSuffix(multipartFile.getOriginalFilename()))));
 
-            System.out.println(url);
-            //res.add(uploadFile(multipartFile));
+            result.add(resp);
         }
-        return res;
+        return result;
     }
 
     @Override

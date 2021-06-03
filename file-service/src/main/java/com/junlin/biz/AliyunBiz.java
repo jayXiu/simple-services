@@ -7,7 +7,6 @@ import com.junlin.vo.UrlDownload;
 import com.junlin.vo.UploadFileResp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -54,7 +53,7 @@ public class AliyunBiz implements FileService{
         String ext = FileUtils.getSuffix(fullPath);
         String sourceName = file.getOriginalFilename();
         fileEntity
-                .setAliyunUrl(aliyunUrl)
+                .setUrl(aliyunUrl)
                 .setFileType(ext)
                 .setFileMd5(fileMd5)
                 .setFileName(sourceName);

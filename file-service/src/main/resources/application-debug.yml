@@ -1,0 +1,11 @@
+aliyunOSS:
+  folder: xxx/ #文件夹名称
+  backetName: xx #bucket名称
+  accessKeyId: xx #密钥Access Key ID
+  accessKeySecret: xx #密钥Access Key Secret
+  endpointUrl: xx
+  cdnUrl: xx #CDN域名
+  extranetDomain: xx #外网域名
+
+fastdfs:
+  tracker: fdfs://xx:22122

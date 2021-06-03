@@ -18,14 +18,6 @@ public class FastdfsHelper {
 
     public static final String SEPARATOR = "/";
 
-    public static void main(String[] args) {
-
-        URI uri = URI.create("fads:120.78.203.244:22122");
-
-        System.out.println(uri);
-
-    }
-
     public FastdfsHelper(URI uri) { // Initialize Fast DFS Client configurations
 
         try {
@@ -65,38 +57,29 @@ public class FastdfsHelper {
             StorageServer storageServer = null;
             storageClient = new StorageClient(trackerServer, storageServer);
 
-            // if(ProtoCommon.activeTest(storageServer.getSocket())){
             uploadResults = storageClient.upload_file(file.getContent(), file.getExt(), meta_list);
-            // }
         } catch (IOException e) {
             log.error("IO Exception when uploadind the file: " + file.getName(), e);
         } catch (Exception e) {
             log.error("Non IO Exception when uploadind the file: " + file.getName(), e);
+        } finally {
+            try {
+                trackerServer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        log.info("upload_file time used: " + (System.currentTimeMillis() - startTime) + " ms");
 
+        log.info("upload_file time used: " + (System.currentTimeMillis() - startTime) + " ms");
         if (uploadResults == null) {
             log.error("upload file fail, error code: " + storageClient.getErrorCode());
         }
 
         String groupName = uploadResults[0];
         String remoteFileName = uploadResults[1];
-
-        String[] remoteFileNames = remoteFileName.split("\\.");
         log.info("upload file successfully!!!  " + "group_name: " + groupName + ", remoteFileName:" + " "
                 + remoteFileName);
-        try {
-            trackerServer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (remoteFileNames[1].equalsIgnoreCase("jpg") || remoteFileNames[1].equalsIgnoreCase("jpeg")
-                || remoteFileNames[1].equalsIgnoreCase("gif") || remoteFileNames[1].equalsIgnoreCase("png")
-                || remoteFileNames[1].equalsIgnoreCase("bmp")) {
-            return SEPARATOR + groupName + SEPARATOR + remoteFileNames[0] + "!" + file.getWidth() + "x"
-                    + file.getHeight() + "." + remoteFileNames[1];
-        } else {
-            return SEPARATOR + groupName + SEPARATOR + remoteFileName;
-        }
+
+        return SEPARATOR + groupName + SEPARATOR + remoteFileName;
     }
 }
