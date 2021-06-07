@@ -42,8 +42,20 @@ public class FastdfsBiz implements FileService{
         return result;
     }
 
+    /**
+     * if ( $request_uri ~* ^.*\?n=([^&]+)$ ) {
+     *      add_header Content-Disposition "attachment;filename=$arg_n";
+     * }
+     * nginx配置：如果url参数拼接n=  会添加下载响应头
+     * @param aliyuns
+     * @return
+     */
     @Override
     public List<String> getDownloadUrl(List<UrlDownload> aliyuns) {
-        return null;
+        List<String> result = new ArrayList<>();
+        for(UrlDownload url : aliyuns){
+            result.add(url.getUrl() + "?n=" + url.getFileName());
+        }
+        return result;
     }
 }
